@@ -1,0 +1,644 @@
+{
+    "cells": [
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "# Gu\u00eda de Git y GitHub\n\n## Git\n\nGit es un sistema de control de versiones distribuido (DVCS). En t\u00e9rminos sencillos, es una herramienta que te permite realizar un seguimiento de los cambios en tus archivos a lo largo del tiempo. Imagina que es como una m\u00e1quina del tiempo para tu c\u00f3digo. Con Git, puedes:\n\n- **Guardar versiones de tus archivos**: Puedes tomar \"instant\u00e1neas\" de tus archivos en diferentes momentos, lo que te permite volver a versiones anteriores si es necesario.\n- **Colaborar con otros**: Git facilita que varias personas trabajen en el mismo proyecto al mismo tiempo, sin pisarse los pies.\n- **Gestionar ramas**: Puedes crear ramas para trabajar en nuevas funciones o correcciones de errores de forma aislada, y luego fusionarlas con la rama principal.\n\n### Instalaci\u00f3n de Git\n\nLa instalaci\u00f3n de Git var\u00eda seg\u00fan tu sistema operativo:\n\n- **Windows**: Puedes descargar el instalador desde el sitio web oficial de Git (git-scm.com).\n- **macOS**: Git suele venir preinstalado en macOS. Si no es as\u00ed, puedes instalarlo a trav\u00e9s de Homebrew o descargar el instalador.\n- **Linux**: Puedes instalar Git a trav\u00e9s del administrador de paquetes de tu distribuci\u00f3n (por ejemplo, `apt`, `yum`, `dnf`).\n\n### Configuraciones iniciales\n\nDespu\u00e9s de instalar Git, debes configurar tu nombre de usuario y direcci\u00f3n de correo electr\u00f3nico:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git config --global user.name \"Tu Nombre\"\ngit config --global user.email \"tu.correo@ejemplo.com\"\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nEstas configuraciones se utilizan para identificar tus commits (las \"instant\u00e1neas\" que tomas de tus archivos).\n\n### Iniciando un repositorio\n\n- **`git init`**: Este comando inicializa un nuevo repositorio Git en el directorio actual.\n- **`git add <archivo>`**: Este comando agrega un archivo al \"staging area\" (\u00e1rea de preparaci\u00f3n), que es donde Git realiza un seguimiento de los cambios que se van a confirmar.\n- **`git commit -m \"Mensaje del commit\"`**: Este comando crea un nuevo commit con los cambios en el \"staging area\". El mensaje del commit describe los cambios que se realizaron.\n- **`git log`**: Este comando muestra el historial de commits del repositorio.\n- **`git status`**: Este comando muestra el estado actual del repositorio, incluyendo los archivos modificados y los archivos en el \"staging area\".\n- **`git restore --staged <archivo>`**: Elimina los archivos del staging area.\n- **`git restore <archivo>`**: Elimina los cambios hechos en el working directory.\n\n### Estados de los archivos\n\nEn Git, los archivos pueden estar en uno de tres estados:\n\n- **Working directory**: Es el directorio donde trabajas en tus archivos.\n- **Staging area**: Es donde preparas los cambios para el pr\u00f3ximo commit.\n- **Local repository**: Es donde Git almacena el historial de commits.\n\n\n## GitHub\n\nGitHub es una plataforma en l\u00ednea que te permite alojar tus repositorios Git en la nube.\n\nAlgunas alternativas a Github son Gitlab y Bitbucket.\n\n- **GitLab**:\n    - GitLab es una plataforma de desarrollo de software completa que ofrece control de versiones, seguimiento de problemas, integraci\u00f3n continua y m\u00e1s.\n    - Es conocido por su amplia gama de caracter\u00edsticas y su flexibilidad.\n    - Tiene una version gratuita muy completa.\n- **Bitbucket**:\n    - Bitbucket, propiedad de Atlassian, se integra bien con otras herramientas de Atlassian como Jira y Trello.\n    - Es una buena opci\u00f3n para equipos que ya utilizan productos de Atlassian.\n    - Ofrece planes gratuitos para equipos peque\u00f1os.\n\n### Crear un repositorio en GitHub\n\n1.  Crea una cuenta en GitHub.\n2.  Haz clic en el bot\u00f3n \"New repository\".\n3.  Ingresa un nombre para tu repositorio y elige si quieres que sea p\u00fablico o privado.\n4.  Haz clic en el bot\u00f3n \"Create repository\".\n\n### Vincular un repositorio local con GitHub\n\n- **`git remote add origin <URL del repositorio>`**: Este comando agrega un \"remote\" (remoto) llamado \"origin\" que apunta a tu repositorio en GitHub.\n\n### Subir cambios a GitHub\n\n- **`git push -u origin master`**: Este comando sube los commits de tu rama \"master\" a tu repositorio en GitHub. La opci\u00f3n `-u` establece la rama \"master\" en GitHub como la rama \"upstream\" (rama ascendente) para tu rama local.\n- **`git push`**: cuando ya se configuro el upstream, solo es necesario usar este comando.\n\n### Colaboraci\u00f3n\n\nPara colaborar con otros en un repositorio de GitHub:\n\n1.  Ve a la p\u00e1gina del repositorio en GitHub.\n2.  Haz clic en la pesta\u00f1a \"Settings\".\n3.  Haz clic en \"Collaborators\".\n4.  Ingresa el nombre de usuario de la persona a la que quieres invitar.\n\n### GitHub y Git\n\n- **`git clone <URL del repositorio>`**: Este comando clona un repositorio de GitHub a tu computadora local.\n- **`git pull`**: Este comando descarga los cambios de un repositorio remoto a tu repositorio local.\n\n### Ramas\n\nLas ramas te permiten trabajar en diferentes versiones de tu proyecto al mismo tiempo.\n\n- **`git checkout -b <nombre de la rama>`**: Este comando crea una nueva rama y cambia a ella.\n- **`git branch`**: Este comando muestra una lista de las ramas en tu repositorio.\n- **`git push --set-upstream origin <nombre de la rama>`**: Este comando sube una rama local a GitHub.\n- **`git checkout <nombre de la rama>`**: Este comando cambia a una rama existente.\n- **`git merge <nombre de la rama>`**: Este comando fusiona los cambios de otra rama a la rama actual.\n- **Pull Request**: Es una solicitud para fusionar los cambios de una rama a otra. Se utiliza para revisar y discutir los cambios antes de fusionarlos.\n\n### Flujos de trabajo de Git\n\nLos flujos de trabajo de Git son patrones recomendados para organizar el desarrollo de software utilizando Git. Algunos de los m\u00e1s populares son:\n\n- **Gitflow:**\n    - Utiliza ramas separadas para el desarrollo de nuevas funciones (ramas \"feature\"), correcciones de errores (ramas \"hotfix\") y lanzamientos (ramas \"release\").\n    - Es adecuado para proyectos con ciclos de lanzamiento complejos.\n    - Puede ser un poco complejo para proyectos peque\u00f1os.\n- **GitHub Flow:**\n    - Se basa en la rama \"master\" como la rama principal.\n    - Cada nueva funci\u00f3n o correcci\u00f3n de errores se desarrolla en una rama separada.\n    - Los cambios se integran en la rama \"master\" mediante Pull Requests.\n    - Es m\u00e1s simple y adecuado para proyectos con lanzamientos continuos.\n- **Trunk-based development:**\n    - Todos los desarrolladores trabajan directamente sobre la rama principal o \"trunk\".\n    - Se utiliza el concepto de Feature Flags para poder subir codigo a producci\u00f3n sin que este afecte a los usuarios finales.\n    - Este flujo de trabajo requiere una buena disciplina por parte de los desarrolladores.\n- **\u00bfCu\u00e1l elegir?**\n    - La elecci\u00f3n del flujo de trabajo depende del tama\u00f1o y complejidad del proyecto, as\u00ed como de las necesidades del equipo.\n    - Es importante que el equipo se ponga de acuerdo en un flujo de trabajo y lo siga consistentemente.\n\n### Otros comandos \u00fatiles\n\n- **`git remote remove <nombre del remoto>`**: Elimina un remoto.\n- **`git remote add <nombre del remoto> <URL>`**: Agrega un remoto.\n- **`git branch -r`**: Lista las ramas remotas.\n- **`git fetch`**: Descarga los cambios de un repositorio remoto, pero no los fusiona.\n- **`git status -s`**: Muestra el estado del repositorio de forma abreviada.\n- **`git branch -d <nombre de la rama>`**: Elimina una rama local.\n\n### Archivo .gitignore\n\nEl archivo `.gitignore` se utiliza para especificar los archivos y directorios que Git debe ignorar. Por ejemplo, puedes ignorar archivos temporales, archivos de configuraci\u00f3n y archivos de registro.\n\n#### Ejemplos de .gitignore\n\n- **Proyecto de React**:\n\n"
+        },
+        {
+            "language": "",
+            "outputs": [],
+            "source": "node_modules/\nbuild/\n.env\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\n### Pull Requests (Solicitudes de extracci\u00f3n)\n\nUn Pull Request (PR) es una caracter\u00edstica fundamental de GitHub (y otras plataformas similares) que facilita la colaboraci\u00f3n en proyectos. En esencia, un PR es una solicitud para fusionar los cambios de una rama a otra. El proceso general es el siguiente:\n\n1.  **Crear una rama**: Un colaborador crea una rama separada para trabajar en una nueva funci\u00f3n o correcci\u00f3n de errores.\n2.  **Realizar cambios**: El colaborador realiza los cambios necesarios en la rama.\n3.  **Enviar un Pull Request**: El colaborador env\u00eda un PR a la rama principal (o cualquier otra rama deseada).\n4.  **Revisi\u00f3n de c\u00f3digo**: Otros colaboradores revisan los cambios, dejan comentarios y sugieren modificaciones.\n5.  **Discusi\u00f3n y ajustes**: Se lleva a cabo una discusi\u00f3n sobre los cambios, y el colaborador realiza los ajustes necesarios.\n6.  **Fusi\u00f3n**: Una vez que los cambios son aprobados, se fusionan con la rama principal.\n\nLos Pull Requests son esenciales para:\n\n- **Revisi\u00f3n de c\u00f3digo**: Garantizan que los cambios sean revisados por otros colaboradores antes de ser fusionados.\n- **Colaboraci\u00f3n**: Facilitan la discusi\u00f3n y la colaboraci\u00f3n entre los miembros del equipo.\n- **Control de calidad**: Ayudan a mantener la calidad del c\u00f3digo y a prevenir errores.\n\n### 1. Resoluci\u00f3n de conflictos de fusi\u00f3n\n\nCuando trabajas con Git, especialmente en proyectos colaborativos, es com\u00fan encontrarse con conflictos de fusi\u00f3n. Estos ocurren cuando Git no puede determinar autom\u00e1ticamente c\u00f3mo combinar los cambios de dos ramas.\n\n- **\u00bfPor qu\u00e9 ocurren?**\n    - Los conflictos surgen cuando dos o m\u00e1s desarrolladores modifican las mismas l\u00edneas de un archivo de manera diferente.\n    - Tambi\u00e9n pueden ocurrir si se elimina un archivo en una rama y se modifica en otra.\n- **\u00bfC\u00f3mo resolverlos?**\n    - Git marcar\u00e1 los archivos con conflictos, indicando las secciones problem\u00e1ticas.\n    - Debes abrir estos archivos y editar manualmente las secciones conflictivas, decidiendo qu\u00e9 cambios mantener.\n    - Git te proporciona marcadores visuales (como `<<<<<<<`, `=======` y `>>>>>>>`) para ayudarte a identificar los conflictos.\n    - Una vez resueltos los conflictos, debes agregar los archivos modificados al \"staging area\" y realizar un commit para completar la fusi\u00f3n.\n- **Consejos:**\n    - Comun\u00edcate con tus compa\u00f1eros de equipo para entender los cambios que realizaron.\n    - Utiliza herramientas de comparaci\u00f3n visual para facilitar la resoluci\u00f3n de conflictos.\n    - Realiza fusiones frecuentes para minimizar la probabilidad de conflictos grandes.\n\n### 3. Seguridad en Git y GitHub\n\nLa seguridad es fundamental al trabajar con Git y GitHub, especialmente en proyectos sensibles.\n\n- **Claves SSH:**\n    - Utiliza claves SSH para autenticarte en GitHub en lugar de contrase\u00f1as.\n    - Las claves SSH son m\u00e1s seguras y evitan la necesidad de ingresar contrase\u00f1as repetidamente.\n- **Protecci\u00f3n de ramas:**\n    - Activa la protecci\u00f3n de ramas en GitHub para evitar que se realicen cambios directamente en ramas importantes como \"master\".\n    - Requiere revisiones de c\u00f3digo y aprobaciones antes de fusionar cambios.\n- **Secretos de GitHub:**\n    - Evita almacenar informaci\u00f3n confidencial (como contrase\u00f1as o claves de API) en tus repositorios.\n    - Utiliza las caracter\u00edsticas de secretos de GitHub para almacenar y gestionar esta informaci\u00f3n de forma segura.\n- **.gitignore:**\n    - Aseg\u00farate de que tus archivos .gitignore esten configurados correctamente, para evitar subir archivos con informacion sensible.\n- **Permisos de repositorio:**\n    - Revisa y ajusta los permisos de tus repositorios para controlar qui\u00e9n tiene acceso.\n- **Autenticaci\u00f3n de dos factores (2FA):**\n    - Habilita la autenticaci\u00f3n de dos factores en tu cuenta de GitHub para agregar una capa adicional de seguridad.\n- **Revisiones de seguridad:**\n    - Realiza revisiones de seguridad peri\u00f3dicas de tus repositorios para identificar y corregir posibles vulnerabilidades.\n\n\n# Pr\u00e1ctica de Git y GitHub para Principiantes\n\nEsta pr\u00e1ctica te guiar\u00e1 a trav\u00e9s de los conceptos b\u00e1sicos de Git y GitHub, herramientas muy \u00fatiles para guardar y compartir el trabajo en proyectos de software (y otros tipos de archivos tambi\u00e9n). Imagina que Git es como un historial de cambios para tus archivos, y GitHub es un lugar en internet donde puedes guardar ese historial y colaborar con otras personas.\n\n## Tema 1: Preparando tu Espacio de Trabajo Local con Git\n\nEste tema te ense\u00f1ar\u00e1 c\u00f3mo empezar a usar Git en tu propia computadora para un proyecto.\n\n**Paso 1: Crear una Carpeta para tu Proyecto**\n\nPrimero, vamos a crear una carpeta donde guardaremos los archivos de nuestro proyecto. Piensa en esta carpeta como el lugar donde trabajar\u00e1s.\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "mkdir pruebaGit   # Esto crea una carpeta llamada \"pruebaGit\"\ncd pruebaGit     # Esto te lleva dentro de la carpeta \"pruebaGit\"\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\n**Paso 2: Crear tu Primer Archivo**\n\nAhora, vamos a crear un archivo sencillo dentro de esta carpeta. Imagina que est\u00e1s escribiendo una p\u00e1gina web b\u00e1sica.\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "pico index.html  # Esto abre un editor de texto llamado \"pico\" para crear o editar un archivo llamado \"index.html\"\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nDentro del editor `pico`, puedes escribir algo simple como:\n\n"
+        },
+        {
+            "language": "html",
+            "outputs": [],
+            "source": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Mi primera p\u00e1gina</title>\n</head>\n<body>\n    <h1>\u00a1Hola Mundo!</h1>\n</body>\n</html>\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nLuego, guarda los cambios y cierra el editor `pico`.\n\n**Paso 3: Inicializar Git en tu Proyecto**\n\nAhora, vamos a decirle a Git que queremos empezar a rastrear los cambios en esta carpeta.\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git init\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nEste comando crea una carpeta oculta llamada `.git` dentro de tu carpeta `pruebaGit`. \u00a1No te preocupes por lo que hay dentro! Solo recuerda que esta carpeta es donde Git guarda toda la informaci\u00f3n sobre los cambios en tu proyecto.\n\nPuedes verificar que se cre\u00f3 la carpeta `.git` con el siguiente comando:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "ls -al\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nVer\u00e1s una l\u00ednea que empieza con un punto (`.`) y dice `.git`.\n\n**Paso 4: Guardar tu Primer Cambio (Commit)**\n\nImagina que has terminado una parte importante de tu trabajo y quieres tomar una \"foto\" de c\u00f3mo est\u00e1 en este momento. Esto es lo que llamamos un \"commit\".\n\nPrimero, necesitamos decirle a Git qu\u00e9 archivos queremos incluir en esa \"foto\". Usamos el comando `add`.\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git add index.html  # Esto le dice a Git que queremos incluir el archivo \"index.html\" en nuestra pr\u00f3xima \"foto\"\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nEsta acci\u00f3n lleva el archivo a una \"sala de espera\" llamada \"staging area\".\n\nAhora, tomemos la \"foto\" usando el comando `commit`. Siempre debemos escribir un mensaje corto que describa qu\u00e9 cambios hicimos en este commit.\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git commit -m \"primer commit\"  # Esto crea un punto de control con el mensaje \"primer commit\"\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\n\u00a1Felicidades! Has hecho tu primer commit.\n\n**Paso 5: Modificar tu Archivo y Guardar Otro Cambio**\n\nAhora, vamos a hacer algunos cambios en nuestro archivo `index.html`.\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "pico index.html  # Abre el archivo para editarlo\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nPuedes agregar m\u00e1s contenido, cambiar el t\u00edtulo, etc. Por ejemplo:\n\n"
+        },
+        {
+            "language": "html",
+            "outputs": [],
+            "source": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Mi primera p\u00e1gina modificada</title>\n</head>\n<body>\n    <h1>\u00a1Hola Mundo!</h1>\n    <p>Este es un cambio.</p>\n</body>\n</html>\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nGuarda los cambios y cierra el editor.\n\nAhora, vamos a guardar este nuevo cambio. Primero, lo agregamos al \"staging area\":\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git add index.html\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nY luego, creamos un nuevo commit:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git commit -m \"segundo commit\"\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\n**Paso 6: Configurar tu Nombre y Correo Electr\u00f3nico en Git**\n\nEs importante que Git sepa qui\u00e9n est\u00e1 haciendo los cambios. Configura tu nombre y correo electr\u00f3nico (esto solo lo har\u00e1s la primera vez que uses Git en tu computadora).\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git config --global user.name \"Tu Nombre\"\ngit config user.name\ngit config --global user.email \"tu_correo@ejemplo.com\"\ngit config user.email\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nReemplaza `\"Tu Nombre\"` con tu nombre real y `\"tu_correo@ejemplo.com\"` con tu direcci\u00f3n de correo electr\u00f3nico. El `--global` significa que esta configuraci\u00f3n se aplicar\u00e1 a todos tus proyectos de Git en esta computadora. Los comandos sin `--global` mostrar\u00e1n la configuraci\u00f3n actual.\n\n**Paso 7: Hacer M\u00e1s Cambios y Ver el Historial**\n\nVamos a modificar el archivo `index.html` una vez m\u00e1s:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "pico index.html\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nPuedes agregar otro p\u00e1rrafo:\n\n"
+        },
+        {
+            "language": "html",
+            "outputs": [],
+            "source": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Mi primera p\u00e1gina modificada</title>\n</head>\n<body>\n    <h1>\u00a1Hola Mundo!</h1>\n    <p>Este es un cambio.</p>\n    <p>Este es otro cambio m\u00e1s.</p>\n</body>\n</html>\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nGuarda y cierra el editor.\n\nAgrega el archivo al \"staging area\":\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git add index.html\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nCrea un nuevo commit:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git commit -m \"tercer commit\"\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nAhora, puedes ver el historial de todos los cambios que has guardado usando el comando `log`:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git log\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nVer\u00e1s una lista de tus commits, mostrando qui\u00e9n hizo el cambio, cu\u00e1ndo y con qu\u00e9 mensaje.\n\n**Paso 8: Trabajar con M\u00e1s Archivos y Revisar el Estado**\n\nVamos a crear un nuevo archivo para darle estilo a nuestra p\u00e1gina web:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "pico style.css\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nDentro de `style.css`, puedes escribir algo como:\n\n"
+        },
+        {
+            "language": "css",
+            "outputs": [],
+            "source": "body {\n    font-family: sans-serif;\n}\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nGuarda y cierra el editor.\n\nTambi\u00e9n vamos a modificar el archivo `index.html` para incluir este archivo de estilos:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "pico index.html\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nAgrega la siguiente l\u00ednea dentro de la secci\u00f3n `<head>`:\n\n"
+        },
+        {
+            "language": "html",
+            "outputs": [],
+            "source": "<link rel=\"stylesheet\" href=\"style.css\">\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nGuarda y cierra el editor.\n\nAhora, puedes ver qu\u00e9 archivos han sido modificados o creados desde el \u00faltimo commit usando el comando `status`:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git status\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nVer\u00e1s que `index.html` y `style.css` aparecen como archivos modificados o sin seguimiento.\n\n**Paso 9: Agregando Todos los Cambios al \"Staging Area\"**\n\nEn lugar de agregar cada archivo individualmente, puedes usar un atajo para agregar todos los archivos modificados y nuevos al \"staging area\":\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git add .\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nEl punto (`.`) significa \"todos los archivos en esta carpeta y sus subcarpetas\".\n\nPuedes verificar de nuevo el estado:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git status\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nAhora deber\u00edas ver que los archivos est\u00e1n listos para ser incluidos en el pr\u00f3ximo commit.\n\n**Paso 10: Deshaciendo Cambios en el \"Staging Area\"**\n\nSi agregaste un archivo al \"staging area\" por error y quieres sacarlo de all\u00ed, puedes usar el comando `restore --staged`:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git restore --staged index.html  # Esto saca el archivo \"index.html\" del \"staging area\"\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nVerifica el estado:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git status\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nVer\u00e1s que `index.html` ya no est\u00e1 en el \"staging area\".\n\n**Paso 11: Deshaciendo Cambios en un Archivo (Volviendo a la \u00daltima Versi\u00f3n Guardada)**\n\nSi modificaste un archivo y quieres volver a la \u00faltima versi\u00f3n que guardaste (el \u00faltimo commit), puedes usar el comando `restore`:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git restore index.html  # Esto restaura el archivo \"index.html\" a la versi\u00f3n del \u00faltimo commit\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\n**Paso 12: Ver Git en Visual Studio Code (Opcional)**\n\nSi utilizas un editor de c\u00f3digo como Visual Studio Code (VS Code), este tiene herramientas integradas para trabajar con Git. Puedes ver los cambios, hacer commits y mucho m\u00e1s directamente desde el editor. Te animamos a explorar estas funcionalidades si usas VS Code.\n\n## Tema 2: Compartiendo tu Trabajo con GitHub\n\nAhora que has aprendido a usar Git localmente, vamos a ver c\u00f3mo puedes compartir tu proyecto con el mundo usando GitHub.\n\n**Paso 1: Crear un Nuevo Repositorio Local (Si no lo hiciste antes)**\n\nSi seguiste el Tema 1, ya tienes una carpeta `pruebaGit` con un proyecto Git inicializado. Si no, puedes crear una nueva:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "mkdir pruebaGit\ncd pruebaGit\npico index.html  # Crea un archivo index.html con alg\u00fan contenido\ngit init\ngit add index.html\ngit commit -m \"primer commit\"\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\n**Paso 2: Crear una Cuenta en GitHub**\n\nSi a\u00fan no tienes una cuenta en GitHub, ve a [github.com](https://github.com/) y crea una.\n\n**Paso 3: Configurar la Rama Principal (Opcional)**\n\nPor defecto, Git ahora usa el nombre `main` para la rama principal en lugar de `master`. Si ves `master` en las instrucciones, puedes usar `main` en su lugar. Si quieres que tu Git local use `master` para que coincida con algunas instrucciones antiguas, puedes configurarlo en tu cuenta de GitHub:\n\n- Ve a tu foto de perfil en la esquina superior derecha.\n- Haz clic en \"Settings\".\n- En la barra lateral izquierda, haz clic en \"Repositories\".\n- Busca la secci\u00f3n \"Repository default branch\" y aseg\u00farate de que est\u00e9 configurada en `\"master\"` (o usa `git branch -M main` en tu terminal para cambiar el nombre de tu rama local a `main`).\n\n**Paso 4: Crear un Nuevo Repositorio en GitHub**\n\nAhora, vamos a crear un lugar en la p\u00e1gina web de GitHub donde guardaremos nuestro proyecto local.\n\n- En la esquina superior derecha de la p\u00e1gina de GitHub, haz clic en el bot\u00f3n **+** (Nuevo) y luego selecciona **New repository**.\n- En la p\u00e1gina \"Create a new repository\":\n    - Escribe un nombre para tu repositorio en el campo \"Repository name\". Por ejemplo, `prueba-6303`.\n    - Puedes dejar la opci\u00f3n \"Public\" seleccionada para que tu proyecto sea visible para todos.\n    - Opcionalmente, puedes marcar la casilla \"Add a README file\" para agregar una descripci\u00f3n b\u00e1sica a tu proyecto. Para esta pr\u00e1ctica, vamos a seguir las instrucciones y agregar un archivo `.gitignore` para Node.js.\n    - Haz clic en el desplegable \"Add .gitignore\" y busca y selecciona \"Node\". Esto le dir\u00e1 a Git que ignore ciertos archivos que no necesitamos subir a GitHub (\u00fatil si trabajas con proyectos de JavaScript).\n    - Haz clic en el bot\u00f3n **Create repository**.\n\n**Paso 5: Conectar tu Repositorio Local con el Repositorio de GitHub**\n\nGitHub te mostrar\u00e1 algunas instrucciones despu\u00e9s de crear el repositorio. Busca la secci\u00f3n que dice algo como \"\u2026or push an existing repository from the command line\". Copia la l\u00ednea que empieza con `git remote add origin`. Deber\u00eda verse as\u00ed (reemplaza `user` con tu nombre de usuario de GitHub y `prueba-6303` con el nombre de tu repositorio):\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git remote add origin https://github.com/tu_usuario/prueba-6303.git\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nPega este comando en tu terminal (aseg\u00farate de que est\u00e1s dentro de la carpeta de tu proyecto `pruebaGit`) y ejec\u00fatalo. Este comando crea una conexi\u00f3n entre tu proyecto local y tu repositorio en GitHub. `origin` es solo un nombre que le damos a esta conexi\u00f3n (es como un alias para la direcci\u00f3n web de tu repositorio en GitHub).\n\n**Paso 6: Subir tus Archivos a GitHub (Push)**\n\nAhora, vamos a enviar los archivos de tu proyecto local a GitHub.\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git push -u origin master\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nSi configuraste tu rama principal como `main`, usar\u00edas:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git push -u origin main\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nLa primera vez que hagas esto, es posible que te pida que inicies sesi\u00f3n en tu cuenta de GitHub. Sigue las indicaciones que aparezcan en tu pantalla. Puede que te pida que autorices a Git a acceder a tu cuenta usando un navegador web.\n\nEl `-u` establece una conexi\u00f3n de seguimiento entre tu rama local y la rama remota en GitHub, lo que significa que en el futuro podr\u00e1s usar simplemente `git push` para subir tus cambios.\n\n**Paso 7: Revisar tu Repositorio en GitHub**\n\nVe a la p\u00e1gina de tu repositorio en GitHub (por ejemplo, `https://github.com/tu_usuario/prueba-6303`). Deber\u00edas ver los archivos de tu proyecto all\u00ed.\n\n**Paso 8: Hacer M\u00e1s Cambios y Subirlos**\n\nVamos a hacer un cambio m\u00e1s en nuestro archivo `index.html` local:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "pico index.html\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nPuedes cambiar el texto del encabezado, por ejemplo:\n\n"
+        },
+        {
+            "language": "html",
+            "outputs": [],
+            "source": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Mi primera p\u00e1gina modificada</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n    <h1>\u00a1Hola Mundo desde GitHub!</h1>\n    <p>Este es un cambio.</p>\n    <p>Este es otro cambio m\u00e1s.</p>\n</body>\n</html>\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nGuarda y cierra el editor.\n\nAgrega el cambio al \"staging area\":\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git add index.html\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nCrea un nuevo commit:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git commit -m \"primer commit\"  # Ups, aqu\u00ed el mensaje del commit deber\u00eda ser m\u00e1s descriptivo, como \"Modificar encabezado de index.html\"\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nSube los cambios a GitHub:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git push\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nComo ya usamos `-u` la primera vez, ahora podemos usar simplemente `git push`.\n\n**Paso 9: Revisar los Cambios en GitHub**\n\nVuelve a la p\u00e1gina de tu repositorio en GitHub y actual\u00edzala. Deber\u00edas ver el nuevo cambio en el archivo `index.html`.\n\n## Tema 3: Trabajando con un Repositorio Existente de GitHub\n\nA veces, querr\u00e1s trabajar en un proyecto que ya existe en GitHub. Aqu\u00ed te mostramos c\u00f3mo hacerlo.\n\n**Paso 1: Clonar un Repositorio**\n\nClonar significa hacer una copia de un repositorio de GitHub en tu computadora. Vamos a clonar un proyecto de ejemplo:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git clone https://github.com/marijnh/Eloquent-JavaScript.git\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nEste comando crear\u00e1 una carpeta llamada `Eloquent-JavaScript` en tu computadora y copiar\u00e1 todo el contenido del repositorio de GitHub a esa carpeta.\n\n**Paso 2: Explorar el Repositorio Clonado**\n\nEntra a la carpeta que se cre\u00f3:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "cd Eloquent-JavaScript/\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nY puedes ver los archivos que contiene:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "ls\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\n**Paso 3: Obtener los \u00daltimos Cambios de un Repositorio Remoto (Pull)**\n\nSi alguien m\u00e1s hace cambios en el repositorio de GitHub mientras t\u00fa est\u00e1s trabajando en tu copia local, necesitar\u00e1s traer esos cambios a tu computadora. Esto se hace con el comando `pull`.\n\nPrimero, vamos a simular que alguien hizo un cambio en el repositorio de `prueba` que creaste antes. Ve a la p\u00e1gina de tu repositorio `prueba` en GitHub y crea un nuevo archivo llamado `README.md`. Puedes escribir algo simple en \u00e9l, como `# Proyecto de prueba`. Luego, haz clic en el bot\u00f3n \"Commit changes...\".\n\nAhora, vuelve a tu terminal (aseg\u00farate de estar dentro de la carpeta `pruebaGit` en tu computadora) y ejecuta el siguiente comando:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git pull\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nEsto descargar\u00e1 el archivo `README.md` que creaste en GitHub a tu carpeta local `pruebaGit`.\n\n## Tema 4: Trabajando con Ramas (Branches)\n\nImagina que est\u00e1s trabajando en una nueva funci\u00f3n para tu proyecto, pero no quieres que esa funci\u00f3n afecte la versi\u00f3n principal del proyecto hasta que est\u00e9 terminada y probada. Aqu\u00ed es donde entran las \"ramas\". Una rama es como una copia separada de tu proyecto donde puedes hacer cambios sin afectar la rama principal (normalmente llamada `master` o `main`).\n\n**Paso 1: Crear y Cambiar a una Nueva Rama**\n\nVamos a crear una nueva rama llamada `feature-login` para trabajar en una funci\u00f3n de inicio de sesi\u00f3n:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "cd pruebaGit  # Aseg\u00farate de estar en la carpeta de tu proyecto\ngit checkout -b feature-login  # Esto crea una nueva rama llamada \"feature-login\" y te cambia a ella\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nEl comando `checkout -b` hace dos cosas: crea una nueva rama y te mueve a esa rama.\n\n**Paso 2: Ver las Ramas Existentes**\n\nPuedes ver todas las ramas en tu proyecto con el siguiente comando:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git branch\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nVer\u00e1s una lista de ramas. La rama en la que est\u00e1s trabajando actualmente estar\u00e1 marcada con un asterisco (`*`).\n\n**Paso 3: Hacer Cambios en la Nueva Rama**\n\nVamos a modificar el archivo `index.html` y crear un nuevo archivo en nuestra rama `feature-login`:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "pico index.html\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nPuedes agregar algo como:\n\n"
+        },
+        {
+            "language": "html",
+            "outputs": [],
+            "source": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Mi primera p\u00e1gina modificada</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n    <h1>\u00a1Hola Mundo desde GitHub!</h1>\n    <p>Este es un cambio.</p>\n    <p>Este es otro cambio m\u00e1s.</p>\n    <div>\n        <label for=\"username\">Usuario:</label>\n        <input type=\"text\" id=\"username\" name=\"username\">\n    </div>\n    <div>\n        <label for=\"password\">Contrase\u00f1a:</label>\n        <input type=\"password\" id=\"password\" name=\"password\">\n    </div>\n</body>\n</html>\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nGuarda y cierra el editor.\n\nAhora, crea un nuevo archivo llamado `script.js`:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "pico script.js\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nPuedes dejarlo vac\u00edo por ahora o agregar alg\u00fan c\u00f3digo JavaScript. Guarda y cierra el editor.\n\n**Paso 4: Guardar los Cambios en la Nueva Rama**\n\nAgrega los archivos modificados y nuevos al \"staging area\":\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git add .\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nCrea un commit para guardar estos cambios:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git commit -m \"nueva caracteristica de inicio de sesi\u00f3n\"\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\n**Paso 5: Subir la Nueva Rama a GitHub**\n\nAhora, vamos a subir esta nueva rama a tu repositorio en GitHub:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git push\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nLa primera vez que subas una nueva rama, Git te dir\u00e1 que la rama no existe en el repositorio remoto y te dar\u00e1 una sugerencia. Ejecuta el comando que te sugiere:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git push --set-upstream origin feature-login\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nEsto crear\u00e1 la rama `feature-login` en GitHub y conectar\u00e1 tu rama local con ella.\n\n**Paso 6: Revisar la Rama en GitHub**\n\nVe a tu repositorio en GitHub. Deber\u00edas ver la nueva rama `feature-login` listada junto a la rama principal (`master` o `main`).\n\n**Paso 7: Volver a la Rama Principal**\n\nPara volver a la rama principal, usa el comando `checkout`:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git checkout master  # O git checkout main si esa es tu rama principal\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\n**Paso 8: Revisar el Contenido Local**\n\nSi ahora revisas los archivos en tu computadora (por ejemplo, con el comando `ls`), notar\u00e1s que el archivo `script.js` que creaste en la rama `feature-login` ya no est\u00e1 presente, y el archivo `index.html` ha vuelto a la versi\u00f3n que ten\u00edas en la rama principal. Esto es porque cada rama tiene su propio conjunto de archivos y su propio historial de cambios.\n\n## Tema 5: Uniendo Ramas (Merging)\n\nUna vez que has terminado de trabajar en una funci\u00f3n en una rama separada y est\u00e1s satisfecho con los cambios, querr\u00e1s combinar esos cambios con la rama principal. Esto se llama \"merging\".\n\n**Paso 1: Cambiar a la Rama Principal**\n\nPrimero, aseg\u00farate de estar en la rama a la que quieres agregar los cambios (normalmente la rama principal):\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git checkout master  # O git checkout main\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\n**Paso 2: Unir la Rama de la Funci\u00f3n con la Rama Principal**\n\nAhora, usa el comando `merge` para unir los cambios de tu rama de funci\u00f3n (`feature-login` en este caso) a la rama principal:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git merge feature-login\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nGit intentar\u00e1 combinar los cambios autom\u00e1ticamente. A veces, si hay cambios conflictivos en los mismos archivos, tendr\u00e1s que resolverlos manualmente. Para esta pr\u00e1ctica, asumiremos que no hay conflictos.\n\n**Paso 3: Subir los Cambios Unidos a GitHub**\n\nUna vez que hayas unido las ramas localmente, sube los cambios a GitHub:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git push\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nAhora, la rama principal en GitHub tambi\u00e9n tendr\u00e1 los cambios de la rama `feature-login`.\n\n## Tema 6: Solicitudes de Extracci\u00f3n (Pull Requests)\n\nLas solicitudes de extracci\u00f3n (Pull Requests o PRs) son una forma de proponer tus cambios en GitHub y permitir que otros los revisen antes de que se unan a la rama principal. Esto es muy \u00fatil para la colaboraci\u00f3n.\n\n**Paso 1: Crear una Nueva Rama para tu Cambio**\n\nVamos a crear una nueva rama llamada `feature-color` para cambiar el color de fondo de nuestra p\u00e1gina:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git checkout -b feature-color\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\n**Paso 2: Hacer Cambios en la Nueva Rama**\n\nVamos a crear un archivo `style.css` (si no lo hiciste antes) y agregar un estilo para el color de fondo:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "pico style.css\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nEscribe algo como:\n\n"
+        },
+        {
+            "language": "css",
+            "outputs": [],
+            "source": "body {\n    font-family: sans-serif;\n    background-color: lightblue;\n}\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nGuarda y cierra el editor.\n\n**Paso 3: Guardar y Subir los Cambios**\n\nAgrega el nuevo archivo:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git add style.css\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nCrea un commit:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git commit -m \"cambio de color de fondo\"\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nSube la rama a GitHub:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git push --set-upstream origin feature-color\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\n**Paso 4: Crear una Solicitud de Extracci\u00f3n en GitHub**\n\nVe a tu repositorio en GitHub. Deber\u00edas ver un mensaje que te pregunta si quieres comparar y crear una solicitud de extracci\u00f3n para la rama `feature-color`. Haz clic en el bot\u00f3n **Compare & pull request**.\n\nEn la p\u00e1gina de la solicitud de extracci\u00f3n:\n\n- Aseg\u00farate de que la \"base branch\" (rama de destino) sea `master` (o `main`) y la \"compare branch\" (rama fuente) sea `feature-color`.\n- Escribe un t\u00edtulo descriptivo para tu solicitud de extracci\u00f3n (por ejemplo, \"Cambiar color de fondo a azul claro\").\n- Puedes agregar un comentario explicando tus cambios.\n- Haz clic en el bot\u00f3n **Create pull request**.\n\n**Paso 5: Revisar la Solicitud de Extracci\u00f3n (Simulado)**\n\nEn un entorno de colaboraci\u00f3n real, otros miembros del equipo revisar\u00edan tus cambios, podr\u00edan dejar comentarios o solicitar modificaciones. Puedes ver la pesta\u00f1a \"Commits\" para ver los commits que incluye esta solicitud de extracci\u00f3n.\n\n**Paso 6: Unir la Solicitud de Extracci\u00f3n**\n\nUna vez que los cambios son aprobados, puedes unirlos a la rama principal. En la p\u00e1gina de la solicitud de extracci\u00f3n, haz clic en el bot\u00f3n **Merge pull request**. Luego, confirma la uni\u00f3n haciendo clic en **Confirm merge**.\n\n**Paso 7: Eliminar la Rama (Opcional)**\n\nDespu\u00e9s de unir la solicitud de extracci\u00f3n, la rama `feature-color` ya no es necesaria. Puedes eliminarla haciendo clic en el bot\u00f3n **Delete branch**.\n\n**Paso 8: Obtener los Cambios Unidos en tu Repositorio Local**\n\nFinalmente, vuelve a tu terminal (aseg\u00farate de estar en la rama principal) y ejecuta el siguiente comando para obtener los cambios que se unieron en GitHub:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git checkout master  # O git checkout main\ngit pull\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nEsto actualizar\u00e1 tu rama principal local con los cambios que se unieron desde la solicitud de extracci\u00f3n.\n\n## Tema 7: Colaboraci\u00f3n con Otros\n\nGit y GitHub son excelentes para trabajar en equipo. Aqu\u00ed te mostramos un ejemplo b\u00e1sico de c\u00f3mo colaborar.\n\n**[Profesor - Configuraci\u00f3n Inicial]**\n\n1.  **Crear un Repositorio en GitHub:** El profesor crea un nuevo repositorio llamado `prueba` (p\u00fablico).\n2.  **Invitar Colaboradores:** El profesor va a la p\u00e1gina del repositorio en GitHub, luego a \"Settings\" > \"Collaborators\" > \"Manage access\" y agrega al \"Docente\" como colaborador.\n\n**[Profesor - Primeros Pasos]**\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git clone https://github.com/nmossos-uniajc-prof/prueba.git\ncd prueba\ngit config user.name \"Nmossos profesores\"\ngit config user.email nmossos@profesores.uniajc.edu.co\ntouch index.html\ntouch style.css\ngit add .\ngit commit -m \"Agregar index.hmtl y style.css\"\ngit push -u origin main\n\ngit checkout -b development\ngit push -u origin development\n"
+        },
+        {
+            "language": "markdown",
+            "outputs": [],
+            "source": "\nEl profesor crea una rama `development` para el trabajo en curso.\n\n**[Docente - Trabajando en el Proyecto]**\n\n1.  **Clonar el Repositorio:** El docente clona el repositorio del profesor.\n\n    ```bash\n    git clone https://github.com/nmossos-uniajc-prof/prueba.git\n    cd prueba\n    git config user.name \"Nmossos Admon\"\n    git config user.email nmossos@admon.uniajc.edu.co\n    ```\n\n2.  **Ver las Ramas Remotas:** El docente ve las ramas que existen en el repositorio de GitHub.\n\n    ```bash\n    git branch -r\n    ```\n\n3.  **Crear una Rama Local Basada en la Rama de Desarrollo:** El docente crea una rama local llamada `feature-nadmon-prof` que sigue la rama `development` del profesor.\n\n    ```bash\n    git checkout --track origin/development\n    git fetch --all\n    git pull --all\n    git checkout development\n    git checkout -b feature-nadmon-prof\n    ```\n\n4.  **Hacer Cambios:** El docente crea un nuevo archivo y modifica uno existente.\n\n    ```bash\n    touch profesores.html\n    echo \"cambio\" >> style.css\n    git add .\n    git commit -m \"agregar profesores.html y estilo boton en style.css\"\n    git push -u origin feature-nadmon-prof\n    ```\n\n**[Profesor - Revisando y Uniendo los Cambios del Docente]**\n\n1.  **Ver la Solicitud de Extracci\u00f3n:** El docente (o el profesor) va a la p\u00e1gina del repositorio en GitHub y crea una nueva solicitud de extracci\u00f3n comparando la rama `feature-nadmon-prof` con la rama `development`.\n2.  **Revisar los Cambios:** El profesor revisa los cambios propuestos por el docente.\n3.  **Unir la Solicitud de Extracci\u00f3n:** Si los cambios son aceptables, el profesor hace clic en \"Merge pull request\" y luego en \"Confirm merge\".\n\n**[Ambos - Manteniendo sus Repositorios Locales Actualizados]**\n\nDespu\u00e9s de que se unen los cambios en GitHub, otros colaboradores (incluido el docente y el profesor) deben ejecutar el siguiente comando en sus repositorios locales para obtener los \u00faltimos cambios:\n\n"
+        },
+        {
+            "language": "bash",
+            "outputs": [],
+            "source": "git checkout development\ngit pull\n"
+        }
+    ]
+}
